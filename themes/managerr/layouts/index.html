@@ -1,0 +1,117 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <a href="{{ .Site.Params.appStoreURL }}" target="_blank" rel="noopener noreferrer">
+        <div class="hero-eyebrow">✦ Available on the App Store</div>
+      </a>
+      <h1 class="hero-title">Your media,<br><span class="accent">managed.</span></h1>
+      <p class="hero-desc">
+        A native iOS app that unifies Radarr, Sonarr, Lidarr, and Transmission in one clean, beautiful dashboard - no browser required.
+      </p>
+      <div class="hero-services">
+        <span class="service-badge">Radarr</span>
+        <span class="service-badge">Sonarr</span>
+        <span class="service-badge">Lidarr</span>
+        <span class="service-badge">Transmission</span>
+      </div>
+      <div class="hero-actions">
+        <a href="{{ .Site.Params.appStoreURL }}" target="_blank" rel="noopener noreferrer">
+          <img src="/img/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge">
+        </a>
+        <a href="{{ .Site.Params.githubURL }}" class="hero-github-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="/img/manny-splash.png" alt="Manny the raccoon, Managerr's mascot, holding a clipboard with a checkmark">
+    </div>
+  </div>
+  <a href="#features" class="scroll-hint" aria-label="Scroll to features">
+    <span class="scroll-hint-text">scroll</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </a>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-header">
+    <p class="section-tag">Features</p>
+    <h2 class="section-title">Everything in one place</h2>
+    <p class="section-desc">Manage your entire self-hosted media stack without switching between apps or browsers.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">🎬</div>
+      <h3 class="feature-title">Movies</h3>
+      <p class="feature-desc">Browse your Radarr library, toggle monitoring, trigger auto or manual searches, and add new movies.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">📺</div>
+      <h3 class="feature-title">TV Shows</h3>
+      <p class="feature-desc">View your Sonarr series, drill into seasons and episodes, toggle monitoring per season or episode, and trigger searches.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">🎵</div>
+      <h3 class="feature-title">Music</h3>
+      <p class="feature-desc">Explore artists and albums via Lidarr, monitor releases, and search for missing albums from your music collection.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon" aria-hidden="true">⬇️</div>
+      <h3 class="feature-title">Downloads</h3>
+      <p class="feature-desc">Monitor active Transmission torrents with live-updating details, per-torrent peers with optional country flags, and full tracker info.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots" id="screenshots">
+  <div class="section-header">
+    <p class="section-tag">See it in action</p>
+    <h2 class="section-title">Built for self-hosters</h2>
+    <p class="section-desc">A clean, native interface for your entire media stack.</p>
+  </div>
+  <div class="screenshots-wrapper">
+    <div class="screenshots-strip">
+      {{ range readDir "static/img/screenshots" }}
+        {{ if and (not .IsDir) (not (hasPrefix .Name ".")) }}
+          <div class="screenshot-frame">
+            <img src="/img/screenshots/{{ replace .Name " " "%20" }}"
+                 alt="Managerr app screenshot"
+                 loading="lazy">
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section class="oss">
+  <div class="oss-inner">
+    <svg class="oss-github-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+    <h2 class="oss-title">Free &amp; Open Source Software</h2>
+    <p class="oss-desc">
+      Managerr is open source and available on GitHub. Contributions, bug reports, and feature requests are all welcome. Built with Swift and SwiftUI - zero external dependencies.
+    </p>
+    <div class="oss-actions">
+      <a href="{{ .Site.Params.githubURL }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+      <a href="{{ .Site.Params.githubURL }}/issues/new/choose" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+        Report an Issue
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

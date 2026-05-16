@@ -1,0 +1,7 @@
+{{ define "main" }}
+<div class="content-page">
+  <h1>{{ .Title }}</h1>
+  <p class="page-meta">Last updated: {{ .Date.Format "January 2, 2006" }}</p>
+  {{ .Content }}
+</div>
+{{ end }}

@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="content-page">
+  <h1>{{ .Title }}</h1>
+  <p class="page-meta">
+    Pulled from <a href="{{ .Site.Params.githubURL }}/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+  </p>
+
+  {{ $apiURL := "https://api.github.com/repos/vt0r/Managerr/releases" }}
+  {{ $opts := dict "headers" (dict "User-Agent" "managerr.app/hugo-build") }}
+  {{ $result := try (resources.GetRemote $apiURL $opts) }}
+  {{ if $result.Err }}
+    {{ warnf "Changelog: could not fetch GitHub releases: %s" $result.Err }}
+    <p class="release-error">
+      Could not load releases at build time.
+      <a href="{{ .Site.Params.githubURL }}/releases" target="_blank" rel="noopener noreferrer">View them on GitHub</a>.
+    </p>
+  {{ else }}
+    {{ $releases := $result.Value.Content | transform.Unmarshal }}
+    {{ if $releases }}
+      {{ range $releases }}
+      <div class="release-entry">
+        <div class="release-header">
+          <a href="{{ .html_url }}" class="release-tag" target="_blank" rel="noopener noreferrer">{{ .tag_name }}</a>
+          <span class="release-date">{{ dateFormat "January 2, 2006" .published_at }}</span>
+        </div>
+        {{ with .body }}
+          <div class="release-body">{{ . | markdownify }}</div>
+        {{ end }}
+      </div>
+      {{ end }}
+    {{ else }}
+      <p class="release-error">
+        No releases yet.
+        <a href="{{ $.Site.Params.githubURL }}/releases" target="_blank" rel="noopener noreferrer">Check GitHub</a>.
+      </p>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,21 @@
+{
+  "name": "Managerr",
+  "short_name": "Managerr",
+  "description": "A native iOS app that brings Radarr, Sonarr, Lidarr, and Transmission together in one clean dashboard.",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#080A1E",
+  "background_color": "#080A1E",
+  "display": "browser",
+  "start_url": "/"
+}

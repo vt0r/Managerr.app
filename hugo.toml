@@ -1,0 +1,17 @@
+baseURL = 'https://managerr.app'
+locale = 'en-us'
+title = 'Managerr'
+disableKinds = ['taxonomy', 'term']
+contentDir = 'content'
+enableEmoji = true
+theme = 'managerr'
+
+[params]
+  appStoreURL  = 'https://apps.apple.com/app/id6759478095'
+  githubURL    = 'https://github.com/vt0r/Managerr'
+  description  = 'A native iOS app that brings Radarr, Sonarr, Lidarr, and Transmission together in one clean dashboard.'
+
+[caches]
+  [caches.getresource]
+    dir    = ':cacheDir/:project'
+    maxAge = 1800
