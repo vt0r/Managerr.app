@@ -898,6 +898,184 @@ html[data-theme="light"] .theme-toggle-sun  { display: none; }
 html[data-theme="light"] .theme-toggle-moon { display: block; }
 
 /* ===========================
+   HAMBURGER MENU (BUTTON)
+   =========================== */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border: none;
+  padding-left: 24px;
+  background: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  transition: color var(--ease), background var(--ease);
+  flex-shrink: 0;
+}
+
+.hamburger:hover { color: var(--color-text); background: var(--color-card); }
+
+.hamburger-line {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+body.nav-open .hamburger .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.nav-open .hamburger .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+body.nav-open .hamburger .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ===========================
+   DRAWER OVERLAY
+   =========================== */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.nav-open .drawer-overlay { opacity: 1; pointer-events: auto; }
+
+/* ===========================
+   DRAWER PANEL
+   =========================== */
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 300px;
+  max-width: 85vw;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  z-index: 201;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.nav-open .drawer { transform: translateX(0); }
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 16px;
+  min-height: 60px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.drawer-brand img {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+}
+
+.drawer-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  border-radius: var(--radius-sm);
+  transition: color var(--ease), background var(--ease);
+  flex-shrink: 0;
+}
+
+.drawer-close-btn:hover { color: var(--color-text); background: var(--color-card); }
+.drawer-close-btn svg { width: 18px; height: 18px; }
+
+/* ===========================
+   DRAWER NAV
+   =========================== */
+.drawer-nav { padding: 4px 0 32px; flex: 1; }
+
+.drawer-group { padding: 18px 0 10px; }
+.drawer-group + .drawer-group { border-top: 1px solid var(--color-border); }
+
+.drawer-group-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  padding: 0 20px;
+  margin-bottom: 4px;
+}
+
+.drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin: 1px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  font-size: 0.93rem;
+  font-weight: 500;
+  min-height: 44px;
+  transition: background var(--ease), color var(--ease);
+}
+
+.drawer-link:hover { background: var(--color-card-hover); color: var(--color-text); }
+
+.drawer-link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.65; }
+
+.drawer-link-accent { color: var(--color-accent); font-weight: 600; }
+.drawer-link-accent:hover { background: var(--color-accent-dim); color: var(--color-accent); }
+
+.drawer-link-stacked {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-height: 54px;
+}
+
+.drawer-link-title { font-size: 0.93rem; font-weight: 600; color: var(--color-text); }
+
+.drawer-link-desc {
+  font-size: 0.77rem;
+  color: var(--color-muted);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+/* Focus styles */
+.hamburger:focus-visible,
+.drawer-close-btn:focus-visible,
+.drawer-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* ===========================
    CHROMA SYNTAX HIGHLIGHTING
    =========================== */
 
