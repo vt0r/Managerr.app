@@ -125,7 +125,6 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--color-accent);
   color: var(--color-on-accent);
   font-weight: 600;
-  padding: 7px 18px;
 }
 
 .nav-cta:hover { opacity: 0.88; color: var(--color-on-accent); background: var(--color-accent); }
@@ -642,7 +641,7 @@ html[data-theme="dark"] .screenshot-frame:hover {
 .content-page strong { color: var(--color-text); font-weight: 600; }
 
 .content-page code {
-  font-family: "SF Mono", "Fira Code", monospace;
+  font-family: "JetBrains Mono", "SF Mono", "Source Code Pro", "Fira Code", monospace;
   font-size: 0.85em;
   background: var(--color-card);
   border: 1px solid var(--color-border);
@@ -670,7 +669,7 @@ html[data-theme="dark"] .screenshot-frame:hover {
 
   .features-grid { grid-template-columns: 1fr; }
 
-  .nav-link:not(.nav-cta) .nav-label { display: none; }
+  .nav-link .nav-label { display: none; }
 
   .oss-inner { padding: 36px 24px; }
 
