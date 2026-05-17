@@ -909,7 +909,7 @@ html[data-theme="light"] .theme-toggle-moon { display: block; }
   height: 36px;
   padding: 8px;
   border: none;
-  padding-left: 3vw;
+  margin-left: 3vw;
   background: none;
   border-radius: var(--radius-sm);
   color: var(--color-muted);
@@ -1050,7 +1050,7 @@ body.nav-open .drawer { transform: translateX(0); }
 
 .drawer-link svg { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.65; }
 
-.drawer-link-accent { color: var(--color-accent); font-weight: 600; }
+.drawer-link-accent { color: var(--color-accent); font-weight: 600; padding: 7px 0px 7px 9px; margin-right: 0px; margin-left: 7px; }
 .drawer-link-accent:hover { background: var(--color-accent-dim); color: var(--color-accent); }
 
 .drawer-link-stacked {
