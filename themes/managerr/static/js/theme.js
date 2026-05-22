@@ -8,11 +8,21 @@
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }
 
+  function updateToggleLabel(current) {
+    var btn = document.getElementById('themeToggle');
+    if (btn) btn.setAttribute('aria-label', current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+
   window.toggleTheme = function () {
     var next = effective() === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem(KEY, next);
+    updateToggleLabel(next);
   };
+
+  document.addEventListener('DOMContentLoaded', function () {
+    updateToggleLabel(effective());
+  });
 
   /* ---- DRAWER ---- */
   var body    = document.body;
